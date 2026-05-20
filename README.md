@@ -170,13 +170,7 @@ int main() {
 
     int numbers[] = {11, 21, 13, 24, 5};
 
-    sort(
-        numbers,
-        length(numbers),
-        sizeof(int),
-        compareInt
-    );
-
+    sort(numbers, length(numbers), sizeof(int), compareInt);
     for(int i = 0; i < length(numbers); i++) {
         printf("%d ", numbers[i]);
     }
@@ -203,13 +197,7 @@ int main() {
 
     char letters[] = {'z', 'b', 'x', 'a'};
 
-    sort(
-        letters,
-        length(letters),
-        sizeof(char),
-        compareChar
-    );
-
+    sort(letters, length(letters), sizeof(char), compareChar);
     for(int i = 0; i < length(letters); i++) {
         printf("%c ", letters[i]);
     }
@@ -236,13 +224,7 @@ int main() {
 
     float nums[] = {3.5, 1.2, 9.7};
 
-    sort(
-        nums,
-        length(nums),
-        sizeof(float),
-        compareFloat
-    );
-
+    sort(nums, length(nums), sizeof(float), compareFloat);
     for(int i = 0; i < length(nums); i++) {
         printf("%.2f ", nums[i]);
     }
@@ -274,13 +256,7 @@ int main() {
         "Bob"
     };
 
-    sort(
-        names,
-        length(names),
-        sizeof(char *),
-        compareString
-    );
-
+    sort(names,length(names),sizeof(char *),compareString);
     for(int i = 0; i < length(names); i++) {
         printf("%s\n", names[i]);
     }
@@ -340,13 +316,7 @@ int main() {
 
     int arr[] = {4, 2, 9, 1};
 
-    sort(
-        arr,
-        length(arr),
-        sizeof(int),
-        compareInt
-    );
-
+    sort(arr,length(arr),sizeof(int),compareInt);
     for(int i = 0; i < length(arr); i++) {
         printf("%d ", arr[i]);
     }
