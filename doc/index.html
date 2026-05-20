@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>shorter.h Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <aside class="sidebar">
+
+        <div class="logo">shorter.h</div>
+        <div class="version">Documentation v1.0</div>
+
+        <h4>Getting Started</h4>
+
+        <a href="#about">About</a>
+        <a href="#install">Installation</a>
+
+        <h4>API</h4>
+
+        <a href="#length">length()</a>
+        <a href="#sort">sort()</a>
+        <a href="#compare">Compare Functions</a>
+
+        <h4>Examples</h4>
+
+        <a href="#int">Integer Sort</a>
+        <a href="#char">Character Sort</a>
+        <a href="#float">Float Sort</a>
+        <a href="#string">String Sort</a>
+
+    </aside>
+
+    <main class="content">
+
+        <div class="hero">
+            <h1>shorter.h</h1>
+
+            <p>
+                A lightweight single-header sorting library for C.
+                Sort integers, strings, floats, and custom data types
+                using one simple generic API.
+            </p>
+
+            <div class="badges">
+                <div class="badge">Single Header</div>
+                <div class="badge">Generic Sorting</div>
+                <div class="badge">Multiple Data Types</div>
+            </div>
+        </div>
+
+        <section id="about">
+            <h2>About</h2>
+
+            <div class="card">
+                <p>
+                    <span class="inline">shorter.h</span>
+                    provides a reusable generic sorting implementation
+                    for C using <span class="inline">void *</span>
+                    and compare functions.
+                </p>
+
+                <p>
+                    It supports built-in compare helpers for common
+                    C data types and includes an array length macro.
+                </p>
+            </div>
+        </section>
+
+        <section id="install">
+            <h2>Installation</h2>
+
+            <div class="card">
+
+<pre><code>project/
+├── main.c
+└── shorter.h</code></pre>
+
+<pre><code>#include "shorter.h"</code></pre>
+
+<pre><code>gcc main.c -o app</code></pre>
+
+            </div>
+        </section>
+
+        <section id="length">
+
+            <h2>length()</h2>
+
+            <div class="api">
+
+                <div class="api-header">
+                    <h3>Get Array Size</h3>
+                </div>
+
+                <div class="api-body">
+
+                    <p>
+                        Returns the number of items in an array.
+                    </p>
+
+<pre><code>length(array)</code></pre>
+
+<pre><code>int nums[] = {1,2,3,4};
+
+printf("%d", length(nums));</code></pre>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="sort">
+
+            <h2>sort()</h2>
+
+            <div class="api">
+
+                <div class="api-header">
+                    <h3>Generic Sorting</h3>
+                </div>
+
+                <div class="api-body">
+
+<pre><code>sort(array, length, sizeof(type), compareFunction);</code></pre>
+
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Description</th>
+                        </tr>
+
+                        <tr>
+                            <td>array</td>
+                            <td>Array to sort</td>
+                        </tr>
+
+                        <tr>
+                            <td>length</td>
+                            <td>Total number of elements</td>
+                        </tr>
+
+                        <tr>
+                            <td>sizeof(type)</td>
+                            <td>Size of element type</td>
+                        </tr>
+
+                        <tr>
+                            <td>compareFunction</td>
+                            <td>Compare callback</td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="compare">
+            <h2>Compare Functions</h2>
+
+            <table>
+                <tr>
+                    <th>Data Type</th>
+                    <th>Function</th>
+                </tr>
+
+                <tr><td>int</td><td>compareInt</td></tr>
+                <tr><td>char</td><td>compareChar</td></tr>
+                <tr><td>short</td><td>compareShort</td></tr>
+                <tr><td>long</td><td>compareLong</td></tr>
+                <tr><td>long long</td><td>compareLongLong</td></tr>
+                <tr><td>unsigned int</td><td>compareUnsignedInt</td></tr>
+                <tr><td>float</td><td>compareFloat</td></tr>
+                <tr><td>double</td><td>compareDouble</td></tr>
+                <tr><td>long double</td><td>compareLongDouble</td></tr>
+                <tr><td>char *</td><td>compareString</td></tr>
+            </table>
+        </section>
+
+        <section id="int">
+            <h2>Integer Sorting</h2>
+
+<pre><code>int nums[] = {11,21,13,24,5};
+
+sort(
+    nums,
+    length(nums),
+    sizeof(int),
+    compareInt
+);</code></pre>
+
+        </section>
+
+        <section id="char">
+            <h2>Character Sorting</h2>
+
+<pre><code>char chars[] = {'z','b','x','a'};
+
+sort(
+    chars,
+    length(chars),
+    sizeof(char),
+    compareChar
+);</code></pre>
+
+        </section>
+
+        <section id="float">
+            <h2>Float Sorting</h2>
+
+<pre><code>float nums[] = {3.5,1.2,9.7};
+
+sort(
+    nums,
+    length(nums),
+    sizeof(float),
+    compareFloat
+);</code></pre>
+
+        </section>
+
+        <section id="string">
+            <h2>String Sorting</h2>
+
+<pre><code>char *names[] = {
+    "Tusar",
+    "Alex",
+    "John"
+};
+
+sort(
+    names,
+    length(names),
+    sizeof(char *),
+    compareString
+);</code></pre>
+
+        </section>
+
+        <div class="footer">
+            shorter.h Documentation — Generic C Sorting Library
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
