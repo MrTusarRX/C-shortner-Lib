@@ -1,49 +1,38 @@
-# C Sort Library
+# Shorter.h
 
-A simple generic sorting library for C that supports multiple data types using `void *` and compare functions.
+A lightweight single-header sorting library for C.
 
-## Features
+`shorter.h` provides:
 
-- Generic sort function (`sort()`)
-- Supports multiple data types
-- Built-in compare functions:
-  - int
-  - char
-  - short
-  - long
-  - long long
-  - unsigned int
-  - float
-  - double
-  - long double
-  - string (`char *`)
-- Array length macro
+- Generic sorting using `void *`
+- Multiple compare functions for different data types
+- Automatic array length macro
+- Single header file (just include and use)
 
 ---
 
-## File Structure
+# Installation
+
+Copy `shorter.h` into your project folder.
+
+Example:
 
 ```txt
 project/
 │── main.c
-│── sort.c
-│── length.h
+│── shorter.h
 ```
 
----
-
-## Installation
-
-Include the header:
+Include it:
 
 ```c
-#include "length.h"
+#include "shorter.h"
 ```
 
 Compile:
 
 ```bash
-gcc main.c sort.c -o app
+gcc main.c -o app
 ```
 
 Run:
@@ -60,51 +49,45 @@ app.exe
 
 ---
 
-## Functions
+# Features
 
-### sort()
+- Generic `sort()` function
+- `length()` macro for array size
+- Built-in compare functions
 
-Sorts any array type.
+Supported types:
 
-Syntax:
-
-```c
-sort(array, length, sizeof(type), compareFunction);
-```
-
-Parameters:
-
-| Parameter | Description |
-|----------|-------------|
-| arr | Array to sort |
-| length | Number of elements |
-| size | Size of one element |
-| compare | Compare function |
-
-Example:
-
-```c
-sort(nums, length(nums), sizeof(int), compareInt);
-```
+- int
+- char
+- short
+- long
+- long long
+- unsigned int
+- float
+- double
+- long double
+- string (`char *`)
 
 ---
+
+# Functions
 
 ## length()
 
 Gets array size automatically.
 
-Syntax:
+### Syntax
 
 ```c
 length(array)
 ```
 
-Example:
+### Example
 
 ```c
-int nums[] = {1,2,3,4};
+int numbers[] = {1,2,3,4};
 
-int len = length(nums);
+int len = length(numbers);
 
 printf("%d", len);
 ```
@@ -115,7 +98,9 @@ Output:
 4
 ```
 
-> Note: `length()` only works with arrays, not pointers.
+### Important
+
+`length()` only works with arrays.
 
 Correct:
 
@@ -135,10 +120,31 @@ length(ptr);
 
 ---
 
-# Supported Compare Functions
+## sort()
 
-| Data Type | Compare Function |
-|---|---|
+Sorts any array type.
+
+### Syntax
+
+```c
+sort(array, length, sizeof(type), compareFunction);
+```
+
+### Parameters
+
+| Parameter | Description |
+|------------|-------------|
+| array | Array to sort |
+| length | Number of elements |
+| sizeof(type) | Size of one item |
+| compareFunction | Compare function |
+
+---
+
+# Compare Functions
+
+| Type | Function |
+|------|----------|
 | int | compareInt |
 | char | compareChar |
 | short | compareShort |
@@ -152,23 +158,27 @@ length(ptr);
 
 ---
 
-## Example: Integer Sorting
+# Examples
+
+## Integer Sorting
 
 ```c
 #include <stdio.h>
-#include "length.h"
+#include "shorter.h"
 
 int main() {
 
-    int nums[] = {11, 21, 13, 24, 5};
+    int numbers[] = {11, 21, 13, 24, 5};
 
-    sort(nums,
-         length(nums),
-         sizeof(int),
-         compareInt);
+    sort(
+        numbers,
+        length(numbers),
+        sizeof(int),
+        compareInt
+    );
 
-    for(int i = 0; i < length(nums); i++) {
-        printf("%d ", nums[i]);
+    for(int i = 0; i < length(numbers); i++) {
+        printf("%d ", numbers[i]);
     }
 
     return 0;
@@ -183,23 +193,25 @@ Output:
 
 ---
 
-## Example: Character Sorting
+## Character Sorting
 
 ```c
 #include <stdio.h>
-#include "length.h"
+#include "shorter.h"
 
 int main() {
 
-    char chars[] = {'z', 'b', 'x', 'a'};
+    char letters[] = {'z', 'b', 'x', 'a'};
 
-    sort(chars,
-         length(chars),
-         sizeof(char),
-         compareChar);
+    sort(
+        letters,
+        length(letters),
+        sizeof(char),
+        compareChar
+    );
 
-    for(int i = 0; i < length(chars); i++) {
-        printf("%c ", chars[i]);
+    for(int i = 0; i < length(letters); i++) {
+        printf("%c ", letters[i]);
     }
 
     return 0;
@@ -214,23 +226,25 @@ a b x z
 
 ---
 
-## Example: Float Sorting
+## Float Sorting
 
 ```c
 #include <stdio.h>
-#include "length.h"
+#include "shorter.h"
 
 int main() {
 
-    float prices[] = {3.5, 1.2, 9.7};
+    float nums[] = {3.5, 1.2, 9.7};
 
-    sort(prices,
-         length(prices),
-         sizeof(float),
-         compareFloat);
+    sort(
+        nums,
+        length(nums),
+        sizeof(float),
+        compareFloat
+    );
 
-    for(int i = 0; i < length(prices); i++) {
-        printf("%.2f ", prices[i]);
+    for(int i = 0; i < length(nums); i++) {
+        printf("%.2f ", nums[i]);
     }
 
     return 0;
@@ -245,11 +259,11 @@ Output:
 
 ---
 
-## Example: String Sorting
+## String Sorting
 
 ```c
 #include <stdio.h>
-#include "length.h"
+#include "shorter.h"
 
 int main() {
 
@@ -260,10 +274,12 @@ int main() {
         "Bob"
     };
 
-    sort(names,
-         length(names),
-         sizeof(char *),
-         compareString);
+    sort(
+        names,
+        length(names),
+        sizeof(char *),
+        compareString
+    );
 
     for(int i = 0; i < length(names); i++) {
         printf("%s\n", names[i]);
@@ -284,17 +300,17 @@ Tusar
 
 ---
 
-## How It Works
+# How It Works
 
-The library uses:
+`sort()` uses:
 
 ```c
 void *
 ```
 
-to accept any data type.
+This allows sorting of any data type.
 
-The compare function determines how two values are compared.
+The compare function decides how values are compared.
 
 Example:
 
@@ -306,6 +322,47 @@ int compareInt(const void *a, const void *b) {
 
 ---
 
-## License
+# Example Project
+
+```txt
+project/
+│── main.c
+│── shorter.h
+```
+
+Example:
+
+```c
+#include <stdio.h>
+#include "shorter.h"
+
+int main() {
+
+    int arr[] = {4, 2, 9, 1};
+
+    sort(
+        arr,
+        length(arr),
+        sizeof(int),
+        compareInt
+    );
+
+    for(int i = 0; i < length(arr); i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+```
+
+Output:
+
+```txt
+1 2 4 9
+```
+
+---
+
+# License
 
 Free to use and modify.
